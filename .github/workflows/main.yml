@@ -9,6 +9,8 @@ jobs:
     runs-on: self-hosted
 
     steps:
+      - name: log
+        run: echo "start"
       - name: move directory
         run: cd D:\dev\cicdTest
       - name: Fetch repository
