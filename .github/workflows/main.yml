@@ -12,25 +12,25 @@ jobs:
         shell: cmd
     steps:
       - name: log
-        run: echo "start"
+        run: ./test.sh
         shell: bash
-      - name: move directory
-        run: cd D:\dev\cicdTest
-        shell: bash
-      - name: Fetch repository
-        run: git fetch origin
-        shell: bash
-      - name: Pull latest changes
-        run: git pull origin main
-        shell: bash
-      - name: Build project
-        run: |
-          # Commands to build the project
-          # For example:
-          #cd project_directory
-          #npm install
-          #npm run build
-          echo "test"
-        shell: bash
+#       - name: move directory
+#         run: cd D:\dev\cicdTest
+#         shell: bash
+#       - name: Fetch repository
+#         run: git fetch origin
+#         shell: bash
+#       - name: Pull latest changes
+#         run: git pull origin main
+#         shell: bash
+#       - name: Build project
+#         run: |
+#           # Commands to build the project
+#           # For example:
+#           #cd project_directory
+#           #npm install
+#           #npm run build
+#           echo "test"
+#         shell: bash
     env:
       MY_LABEL: test
