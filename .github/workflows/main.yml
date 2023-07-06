@@ -13,7 +13,6 @@ jobs:
     steps:
       - name: log
         run: ./test.sh
-        shell: bash
 #       - name: move directory
 #         run: cd D:\dev\cicdTest
 #         shell: bash
