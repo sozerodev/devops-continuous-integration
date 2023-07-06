@@ -9,6 +9,8 @@ jobs:
     runs-on: self-hosted
 
     steps:
+      - name: move directory
+        run: cd D:\dev\cicdTest
       - name: Fetch repository
         run: git fetch origin
       - name: Pull latest changes
