@@ -1,0 +1,25 @@
+
+name: Build Project
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - name: Fetch repository
+        run: git fetch origin
+      - name: Pull latest changes
+        run: git pull origin main
+      - name: Build project
+        run: |
+          # Commands to build the project
+          # For example:
+          #cd project_directory
+          #npm install
+          #npm run build
+          echo "test"
+    env:
+      MY_LABEL: test
