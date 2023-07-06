@@ -3,4 +3,4 @@
 [self-hosted Runners](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/about-self-hosted-runners) 를 이용하여 테스트중
 
 
-token값 따로 저장해놓기...~
+빌드가 잘 되나 봅시다
