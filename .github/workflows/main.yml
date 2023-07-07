@@ -82,4 +82,6 @@ jobs:
           .\test.sh
       - name: copy and move
         run: |
+          cd /d D:\
+          cd \dev\cicdTest
           xcopy "./dist" "C:\cd" /E /I /Y
