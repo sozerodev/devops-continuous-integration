@@ -45,7 +45,8 @@ jobs:
         run: |
           cd /d D:\
           cd \dev\cicdTest
-          for /f %%i in ('git diff --name-only HEAD~1') do set changes=%%i
+          git diff --name-only HEAD~1 > changes.txt
+          set /p changes=<changes.txt
           echo changes=%changes% >> $GITHUB_ENV
 
       - name: Install dependencies
