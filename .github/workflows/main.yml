@@ -68,6 +68,5 @@ jobs:
         run: |
           cd /d D:\
           cd \dev\cicdTest
-          npm ci
           npm run build
           .\test.sh
