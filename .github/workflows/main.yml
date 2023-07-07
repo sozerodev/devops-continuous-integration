@@ -52,3 +52,6 @@ jobs:
           echo "test" >> log.txt
           echo "Current location: $current_location" >> log.txt
           .\test.sh
+          cd /d D:\
+          cd \dev\gri_front
+          echo "test" >> testlogtest.txt
