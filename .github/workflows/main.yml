@@ -42,17 +42,18 @@ jobs:
 
       - name: Check for changes in package.json
         id: check-changes
-        run: echo ::set-output name=changes::$(git diff --name-only HEAD~1)
+        run: |
+          changes=$(git diff --name-only HEAD~1)
+          echo "changes=$changes" >> $GITHUB_ENV
 
       - name: Install dependencies
         run: |
-
-          if [[ "${{ steps.check-changes.outputs.changes }}" == *"package.json"* ]]; then
+          if [[ "${{ env.changes }}" == *"package.json"* ]]; then
             cd /d D:\
             cd \dev\cicdTest
             npm ci
           else
-            echo "No changes in package.json. Skipping npm install."
+            echo "package.json에 변경 사항이 없습니다. npm install을 건너뜁니다."
           fi
 
       - name: npm build
