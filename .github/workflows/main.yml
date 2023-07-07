@@ -3,6 +3,11 @@ on:
   push:
     branches:
       - main
+
+  pull_request:
+    branches:
+      - main
+
 jobs:
   build:
     runs-on: self-hosted
@@ -19,29 +24,44 @@ jobs:
           echo "secrets: %{{secrets.PATH}}" >> testlogtest.txt
 
           .\test.sh
-      - name: move
-        run: |
-          cd /d D:\
-          cd \dev\cicdTest
-          echo "Current location: %cd%" >> testlogtest.txt
-          echo "Current location: %USERNAME%" >> testlogtest.txt
+
+      # - name: move
+      #   run: |
+      #     cd /d D:\
+      #     cd \dev\cicdTest
+      #     echo "Current location: %cd%" >> testlogtest.txt
+      #     echo "Current location: %USERNAME%" >> testlogtest.txt
+
       - name: git update
         run: |
           cd /d D:\
           cd \dev\cicdTest
           git fetch
           git pull
-      - name: npm install
+
+
+      - name: Check for changes in package.json
+        id: check-changes
+        run: echo ::set-output name=changes::$(git diff --name-only HEAD~1)
+
+      - name: Install dependencies
         run: |
-          cd /d D:\
-          cd \dev\cicdTest
-          npm ci
+
+          if [[ "${{ steps.check-changes.outputs.changes }}" == *"package.json"* ]]; then
+            cd /d D:\
+            cd \dev\cicdTest
+            npm ci
+          else
+            echo "No changes in package.json. Skipping npm install."
+          fi
+
       - name: npm build
         run: |
           cd /d D:\
           cd \dev\cicdTest
           npm run build
           .\test.ps1
+
       - name: copy and move
         run: |
           cd /d D:\
