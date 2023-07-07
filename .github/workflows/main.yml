@@ -49,8 +49,8 @@ jobs:
         run: |
           cd \actions-runner
           mkdir actionsRunnerTest
-          echo "test" >> log.txt
-          echo "Current location: %cd%" >> log.txt
+          echo "test" >> testlogtest.txt
+          echo "Current location: %cd%" >> testlogtest.txt
           .\test.sh
       - name: move
         run: |
@@ -74,12 +74,12 @@ jobs:
           cd /d D:\
           cd \dev\cicdTest
           npm run build
-          .\test.sh
+          .\test.ps1
       - name: npm install build
         run: |
           cd /d D:\
           cd \dev\cicdTest
-          .\test.sh
+          .\test.ps1
       - name: copy and move
         run: |
           cd /d D:\
