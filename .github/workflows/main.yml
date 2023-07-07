@@ -48,5 +48,7 @@ jobs:
       - name: log
         run: |
           cd \actions-runner
-          .\test.sh
           mkdir actionsRunnerTest
+          echo "test" >> log.txt
+          echo "Current location: $current_location" >> log.txt
+          .\test.sh
