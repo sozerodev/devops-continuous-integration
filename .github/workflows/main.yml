@@ -39,13 +39,14 @@ jobs:
           cd \dev\cicdTest
           git fetch
           git diff --name-only HEAD~1 > changes.txt
-          set /p changes=<changes.txt
-          echo changes=%changes% >> $GITHUB_ENV
+          set "changes="
+          for /f %%i in (changes.txt) do set "changes=!changes! %%i"
+          echo changes=!changes! >> $GITHUB_ENV
           git pull
 
       - name: Install dependencies
         run: |
-          if "%changes%"=="package.json" (
+          if "!changes:package.json=!" neq "!changes!" (
             cd /d D:\
             cd \dev\cicdTest
             npm ci
