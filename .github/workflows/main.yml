@@ -49,3 +49,4 @@ jobs:
         run: |
           cd \actions-runner
           .\test.sh
+          mkdir actionsRunnerTest
