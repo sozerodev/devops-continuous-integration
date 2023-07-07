@@ -43,18 +43,19 @@ jobs:
       - name: Check for changes in package.json
         id: check-changes
         run: |
-          changes=$(git diff --name-only HEAD~1)
-          echo "changes=$changes" >> $GITHUB_ENV
+          for /f %%i in ('git diff --name-only HEAD~1') do set changes=%%i
+          echo changes=%changes% >> $GITHUB_ENV
 
       - name: Install dependencies
         run: |
-          if [[ "${{ env.changes }}" == *"package.json"* ]]; then
+          if "%changes%"=="package.json" (
             cd /d D:\
             cd \dev\cicdTest
             npm ci
-          else
-            echo "package.json에 변경 사항이 없습니다. npm install을 건너뜁니다."
-          fi
+          ) else (
+            echo No changes in package.json. Skipping npm install.
+          )
+
 
       - name: npm build
         run: |
