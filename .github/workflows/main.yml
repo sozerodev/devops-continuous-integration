@@ -52,10 +52,16 @@ jobs:
           echo "test" >> log.txt
           echo "Current location: $current_location" >> log.txt
           .\test.sh
+      - name: move
+        run: |
           cd /d D:\
           cd \dev\cicdTest
           echo "test" >> testlogtest.txt
+      - name: git update
+        run: |
           git fetch
           git pull
+      - name: npm install and build
+        run: |
           npm i
           npm run build
