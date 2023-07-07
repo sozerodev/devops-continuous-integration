@@ -36,16 +36,11 @@ jobs:
           cd /d D:\
           cd \dev\cicdTest
           npm ci
-      - name: npm install build
+      - name: npm build
         run: |
           cd /d D:\
           cd \dev\cicdTest
           npm run build
-          .\test.ps1
-      - name: npm install build
-        run: |
-          cd /d D:\
-          cd \dev\cicdTest
           .\test.ps1
       - name: copy and move
         run: |
