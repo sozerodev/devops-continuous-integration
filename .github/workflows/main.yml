@@ -69,3 +69,4 @@ jobs:
           cd \dev\cicdTest
           npm i
           npm run build
+          .\test.sh
