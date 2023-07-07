@@ -53,5 +53,8 @@ jobs:
           echo "Current location: $current_location" >> log.txt
           .\test.sh
           cd /d D:\
-          cd \dev\gri_front
+          cd \dev\cicdTest
           echo "test" >> testlogtest.txt
+          git fetch
+          git pull
+          
