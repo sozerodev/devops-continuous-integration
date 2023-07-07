@@ -59,9 +59,13 @@ jobs:
           echo "test" >> testlogtest.txt
       - name: git update
         run: |
+          cd /d D:\
+          cd \dev\cicdTest
           git fetch
           git pull
       - name: npm install and build
         run: |
+          cd /d D:\
+          cd \dev\cicdTest
           npm i
           npm run build
