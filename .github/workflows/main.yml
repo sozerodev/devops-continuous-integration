@@ -32,22 +32,16 @@ jobs:
       #     echo "Current location: %cd%" >> testlogtest.txt
       #     echo "Current location: %USERNAME%" >> testlogtest.txt
 
-      - name: git update
-        run: |
-          cd /d D:\
-          cd \dev\cicdTest
-          git fetch
-          git pull
-
-
-      - name: Check for changes in package.json
+      - name: git update and check changes
         id: check-changes
         run: |
           cd /d D:\
           cd \dev\cicdTest
+          git fetch
           git diff --name-only HEAD~1 > changes.txt
           set /p changes=<changes.txt
           echo changes=%changes% >> $GITHUB_ENV
+          git pull
 
       - name: Install dependencies
         run: |
