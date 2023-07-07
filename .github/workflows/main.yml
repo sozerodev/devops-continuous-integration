@@ -46,7 +46,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          if not defined changes (
+          if "%changes%"=="" (
             echo "1.package.json에 변경 사항이 없습니다. npm install을 건너뜁니다."
           ) else (
             echo %changes% | find /I "package.json" > nul
