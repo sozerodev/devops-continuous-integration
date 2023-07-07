@@ -57,6 +57,7 @@ jobs:
           cd /d D:\
           cd \dev\cicdTest
           echo "Current location: %cd%" >> testlogtest.txt
+          echo "Current location: %USERNAME%" >> testlogtest.txt
       - name: git update
         run: |
           cd /d D:\
@@ -67,6 +68,6 @@ jobs:
         run: |
           cd /d D:\
           cd \dev\cicdTest
-          npm i
+          npm ci
           npm run build
           .\test.sh
