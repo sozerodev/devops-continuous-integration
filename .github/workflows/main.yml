@@ -64,9 +64,19 @@ jobs:
           cd \dev\cicdTest
           git fetch
           git pull
-      - name: npm install and build
+      - name: npm install
+        run: |
+          cd /d D:\
+          cd \dev\cicdTest
+          npm ci
+      - name: npm install build
         run: |
           cd /d D:\
           cd \dev\cicdTest
           npm run build
+          .\test.sh
+      - name: npm install build
+        run: |
+          cd /d D:\
+          cd \dev\cicdTest
           .\test.sh
