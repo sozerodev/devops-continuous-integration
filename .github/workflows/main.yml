@@ -47,5 +47,5 @@ jobs:
     steps:
       - name: log
         run: |
-          cd \c\actions-runner
-          ./test.sh
+          cd \actions-runner
+          .\test.sh
