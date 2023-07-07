@@ -80,3 +80,6 @@ jobs:
           cd /d D:\
           cd \dev\cicdTest
           .\test.sh
+      - name: copy and move
+        run: |
+          xcopy "./dist" "C:\cd" /E /I /Y
