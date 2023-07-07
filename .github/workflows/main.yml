@@ -50,13 +50,13 @@ jobs:
           cd \actions-runner
           mkdir actionsRunnerTest
           echo "test" >> log.txt
-          echo "Current location: $current_location" >> log.txt
+          echo "Current location: %cd%" >> log.txt
           .\test.sh
       - name: move
         run: |
           cd /d D:\
           cd \dev\cicdTest
-          echo "test" >> testlogtest.txt
+          echo "Current location: %cd%" >> testlogtest.txt
       - name: git update
         run: |
           cd /d D:\
