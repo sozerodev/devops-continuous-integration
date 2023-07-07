@@ -1,0 +1,1 @@
+echo "Current location: $current_location" >> log.txt
