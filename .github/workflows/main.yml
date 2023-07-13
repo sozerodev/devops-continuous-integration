@@ -15,10 +15,63 @@ jobs:
       run:
         shell: cmd
     steps:
-      - name: git update and check changes
+      - name: test
         id: check-changes
         run: |
           cd /d D:\
           cd \dev\cicdTest
           bash ./bash/test.sh
-          
+
+
+      - name: log
+        run: |
+          cd \actions-runner
+          mkdir actionsRunnerTest
+          echo "test" >> testlogtest.txt
+          echo "Current location: %cd%" >> testlogtest.txt
+          echo "secrets: %{{secrets.PATH}}" >> testlogtest.txt
+          .\test.sh
+      # - name: move
+      #   run: |
+      #     cd /d D:\
+      #     cd \dev\cicdTest
+      #     echo "Current location: %cd%" >> testlogtest.txt
+      #     echo "Current location: %USERNAME%" >> testlogtest.txt
+
+      - name: git update and check changes
+        id: check-changes
+        run: |
+          cd /d D:\
+          cd \dev\cicdTest
+          git fetch
+          git pull
+          git diff --name-only HEAD~1 > changes.txt
+          set "changes="
+          for /f %%i in (changes.txt) do set "changes=!changes! %%i"
+          echo "changes=%%changes%%" > $GITHUB_ENV
+      - name: Install dependencies
+        run: |
+          if "%changes%"=="" (
+            echo "1.package.json에 변경 사항이 없습니다. npm install을 건너뜁니다."
+          ) else (
+            echo %changes% | find /I "package.json" > nul
+            if "%ERRORLEVEL%"=="0" (
+              cd /d D:\
+              cd \dev\cicdTest
+              npm ci
+            ) else (
+              echo %ERRORLEVEL% >> testlog.txt
+              echo "2.package.json에 변경 사항이 없습니다. npm install을 건너뜁니다."
+            )
+          )
+      - name: npm build
+        run: |
+          cd /d D:\
+          cd \dev\cicdTest
+          npm run build
+          .\test.ps1
+      - name: copy and move
+        run: |
+          cd /d D:\
+          cd \dev\cicdTest
+          xcopy "./dist" "C:\cd" /E /I /Y
