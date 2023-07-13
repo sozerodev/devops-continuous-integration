@@ -18,5 +18,4 @@ jobs:
       - name: test
         run: |
           cd /actions-runner
-          (Get-Content -Raw -Path test.ps1) -replace "\r\n", "`n" | Set-Content -NoNewline -Path test.ps1
           bash ./test.ps1 # 이제야 되는거니..
