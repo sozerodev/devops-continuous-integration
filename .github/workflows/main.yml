@@ -15,6 +15,14 @@ jobs:
       run:
         shell: cmd
     steps:
+      - name: test
+        run: |
+          cd \actions-runner
+          .\test.sh
+          
+          
+      
+      # ----------------------------------------------------------------------
       - name: log
         run: |
           cd \actions-runner
