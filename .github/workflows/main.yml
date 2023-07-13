@@ -19,7 +19,7 @@ jobs:
         shell: pwsh
         run: |
           cd /actions-runner
-          bash test.ps1
+          ./test.ps1
           
           
       
