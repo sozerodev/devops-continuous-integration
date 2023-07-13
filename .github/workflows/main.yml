@@ -17,9 +17,9 @@ jobs:
     steps:
       - name: test
         shell: pwsh
-        run: |
-          cd /actions-runner
-          ./test.ps1
+        run: echo ${env:PATH}
+          #cd /actions-runner
+          #./test.ps1
           
           
       
