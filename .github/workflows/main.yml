@@ -18,7 +18,7 @@ jobs:
       - name: test
         run: |
           cd /actions-runner
-          bash ./test.ps1
+          bash ./test.ps1 # 이제야 되는거니..
           
           
       
