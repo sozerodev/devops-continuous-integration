@@ -18,8 +18,8 @@ jobs:
       - name: test
         shell: pwsh
         run: |
-          cd \actions-runner
-          bash test.sh
+          cd /actions-runner
+          bash test.ps1
           
           
       
