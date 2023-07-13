@@ -17,5 +17,5 @@ jobs:
     steps:
       - name: test
         run: |
-          cd /c/actions-runner
+          cd "/c/actions-runner"
           bash test.sh # 이제야 되는거니..
