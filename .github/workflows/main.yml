@@ -17,5 +17,8 @@ jobs:
     steps:
       - name: test
         run: |
+          pwd
+          whami
+          ls
           cd "/c/actions-runner"
           bash test.sh # 이제야 되는거니..
