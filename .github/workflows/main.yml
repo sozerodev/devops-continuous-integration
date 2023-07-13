@@ -16,7 +16,7 @@ jobs:
         shell: cmd
     steps:
       - name: test
-        id: check-changes
+        id: just-test
         run: |
           cd /d D:\
           cd \dev\cicdTest
